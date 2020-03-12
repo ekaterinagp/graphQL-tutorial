@@ -1,7 +1,9 @@
 import mongoose from "mongoose";
-import Sequelize from "sequelize";
+// import Sequelize from "sequelize";
+const { Sequelize, Model, DataTypes } = require("sequelize");
 import _ from "lodash";
 import casual from "casual";
+import { response } from "express";
 
 // Mongo connection
 mongoose.Promise = global.Promise;
@@ -44,9 +46,9 @@ const sequelize = new Sequelize("database", null, null, {
 });
 
 const Aliens = sequelize.define("aliens", {
-  firstName: { type: Sequelize.STRING },
-  lastName: { type: Sequelize.STRING },
-  planet: { type: Sequelize.STRING }
+  firstName: DataTypes.STRING,
+  lastName: DataTypes.STRING,
+  planet: DataTypes.STRING
 });
 
 Aliens.sync({ force: true }).then(() => {
