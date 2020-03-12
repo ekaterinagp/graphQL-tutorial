@@ -1,26 +1,7 @@
 import mongoose from "mongoose";
 import { Friends } from "./dbConnectors";
-import { isNonNullType } from "graphql";
 
-// class Friend {
-//   constructor(
-//     id,
-//     { firstName, lastName, gender, age, language, email, contacts }
-//   ) {
-//     this.id = id;
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.gender = gender;
-//     this.age = age;
-//     this.language = language;
-//     this.email = email;
-//     this.contacts = contacts;
-//   }
-// }
-
-// const friendDatabase = {};
-
-//resolver map
+// resolver map
 export const resolvers = {
   Query: {
     getFriend: ({ id }) => {
@@ -40,6 +21,7 @@ export const resolvers = {
       });
 
       newFriend.id = newFriend._id;
+
       return new Promise((resolve, object) => {
         newFriend.save(err => {
           if (err) reject(err);
